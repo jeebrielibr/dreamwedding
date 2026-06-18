@@ -88,7 +88,17 @@ export default function Login() {
           </button>
         </form>
 
-        <div className="mt-8 text-center text-xs text-on-surface-variant bg-surface-container-low/50 py-3 rounded-xl">
+        <div className="mt-4">
+          <button
+            onClick={() => navigate('/')}
+            className="w-full bg-surface-container-low text-primary py-3 rounded-xl font-sans text-xs font-semibold tracking-wider uppercase hover:bg-surface-container-high transition-all duration-300 flex items-center justify-center gap-2"
+          >
+            <span className="material-symbols-outlined text-sm">home</span>
+            Kembali Ke Beranda
+          </button>
+        </div>
+
+        <div className="mt-6 text-center text-xs text-on-surface-variant bg-surface-container-low/50 py-3 rounded-xl">
           <p className="font-sans">Credentials: <span className="font-semibold text-primary">admin</span> / <span className="font-semibold text-primary">admin123</span></p>
         </div>
       </div>

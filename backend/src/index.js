@@ -8,6 +8,9 @@ const crypto = require('crypto');
 
 dotenv.config();
 
+const { authenticateToken } = require('../middlewares/authMiddleware');
+const { authorizeRoles } = require('../middlewares/authorizeMiddleware');
+
 const app = express();
 const port = process.env.PORT || 5000;
 const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key-change-this-in-production';
@@ -56,24 +59,6 @@ if (USE_DATABASE) {
       .replace(/\s+/g, '-')
       .replace(/[^\w\-]+/g, '')
       .replace(/\-\-+/g, '-');
-  };
-
-  // Middleware: Authenticate Token (Dummy version)
-  const authenticateToken = (req, res, next) => {
-    const authHeader = req.headers['authorization'];
-    const token = authHeader && authHeader.split(' ')[1];
-
-    if (!token) {
-      return res.status(401).json({ message: 'Authentication required' });
-    }
-
-    jwt.verify(token, JWT_SECRET, (err, user) => {
-      if (err) {
-        return res.status(403).json({ message: 'Invalid token' });
-      }
-      req.user = user;
-      next();
-    });
   };
 
   // --- Dummy Endpoints Implementation ---
