@@ -86,7 +86,7 @@ export default function LandingPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+    const apiUrl = import.meta.env.VITE_API_URL || '';
     
     // Fetch packages
     fetch(`${apiUrl}/api/packages`)
